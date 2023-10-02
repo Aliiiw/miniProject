@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+    <!--ScrollView-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--Container-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--Header image-->
+            <ImageView
+                android:id="@+id/detailPageHeaderImg"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            <!--Back-->
+            <ImageView
+                android:id="@+id/detailPageHeaderBackImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:alpha="1.0"
+                android:background="@drawable/bg_gray_stroke"
+                android:padding="13dp"
+                android:src="@drawable/back"
+                app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white" />
+            <!--favorite-->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:alpha="1.0"
+                android:background="@drawable/bg_gray_stroke"
+                android:padding="13dp"
+                android:src="@drawable/heart"
+                app:layout_constraintRight_toRightOf="@id/guildLine_right"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white" />
+            <!--Left guild line-->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guildLine_left"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="30dp" />
+            <!--Right guild line-->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guildLine_right"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="30dp" />
+            <!--Price layout-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detailPage_priceLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+                app:layout_constraintRight_toRightOf="@id/guildLine_right"
+                app:layout_constraintTop_toBottomOf="@id/detailPageHeaderImg">
+                <!--Time-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_gray_stroke"
+                    android:fontFamily="@font/asap"
+                    android:gravity="center"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="20 hours ago"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="@id/guidePrice"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--Guide price-->
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidePrice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.6" />
+                <!--Price-->
+                <TextView
+                    android:id="@+id/detailPagePriceTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cabin_medium"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/guidePrice"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--Address-->
+                <TextView
+                    android:id="@+id/detailPageAddressTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/asap"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/guidePrice"
+                    app:layout_constraintTop_toBottomOf="@id/detailPagePriceTxt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--House info title-->
+            <TextView
+                android:id="@+id/detailPage_houseInfoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/house_information"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+                app:layout_constraintTop_toBottomOf="@id/detailPage_priceLayout" />
+            <!--House info list-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detailPageHouseInfoList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailPage_houseInfoTitle" />
+            <!--Description-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/asap"
+                android:paddingBottom="120dp"
+                android:text="@string/loremIpsum"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+                app:layout_constraintRight_toRightOf="@id/guildLine_right"
+                app:layout_constraintTop_toBottomOf="@id/detailPageHouseInfoList" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton12"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
+        android:drawableLeft="@drawable/ic_email"
+        android:fontFamily="@font/asap"
+        android:padding="20dp"
+        android:text="Message"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:backgroundTint="@color/tangaroa"
+        app:cornerRadius="40dp"
+        app:drawableTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/materialButton11"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/nestedScrollView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton11"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="30dp"
+        android:drawableLeft="@drawable/ic_phone"
+        android:fontFamily="@font/asap"
+        android:padding="20dp"
+        android:text="Call"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:backgroundTint="@color/tangaroa"
+        app:cornerRadius="40dp"
+        app:drawableTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nestedScrollView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/materialButton12" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

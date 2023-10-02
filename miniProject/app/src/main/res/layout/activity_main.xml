@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dp"
+    tools:context=".ui.main.MainActivity">
+
+    <!--Left guild line-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guildLine_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <!--Right guild line-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guildLine_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
+
+    <!--Menu image-->
+    <ImageView
+        android:id="@+id/menuImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_stroke_rounded"
+        android:padding="12dp"
+        android:rotation="180"
+        android:src="@drawable/menu"
+        app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Search image-->
+    <ImageView
+        android:id="@+id/searchImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_stroke_rounded"
+        android:padding="15dp"
+        android:src="@drawable/search"
+        app:layout_constraintEnd_toStartOf="@+id/guildLine_right"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--City txt-->
+    <TextView
+        android:id="@+id/tvCityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/arimo"
+        android:text="@string/city"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guildLine_left"
+        app:layout_constraintTop_toBottomOf="@+id/menuImage" />
+
+    <!--City name layout-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cityTitleLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+        app:layout_constraintRight_toRightOf="@id/guildLine_right"
+        app:layout_constraintTop_toBottomOf="@id/tvCityTitle">
+
+        <ImageView
+            android:id="@+id/settingImage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/setting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/cabin_medium"
+            android:maxLines="1"
+            android:text="@string/san_francisco"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/settingImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Line-->
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/solitude"
+        app:layout_constraintLeft_toLeftOf="@id/guildLine_left"
+        app:layout_constraintRight_toRightOf="@id/guildLine_right"
+        app:layout_constraintTop_toBottomOf="@id/cityTitleLayout" />
+
+    <!--Filter Recycler-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filterRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingStart="22dp"
+        android:paddingLeft="22dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+    <!--House Recycler-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/houseRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guildLine_right"
+        app:layout_constraintStart_toStartOf="@+id/guildLine_left"
+        app:layout_constraintTop_toBottomOf="@+id/filterRecyclerView" />
+
+    <!--Map view-->
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/tangaroa"
+        android:drawableLeft="@drawable/ic_map"
+        android:drawableTint="@color/white"
+        android:padding="20dp"
+        android:text="@string/map_view"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
